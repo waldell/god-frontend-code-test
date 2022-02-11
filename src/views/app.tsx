@@ -1,12 +1,10 @@
-import "../public/css/styles.css";
-import React, { useEffect, useState } from "react";
 import carsApi, { Car } from "api/cars";
 import CarSlide from "components/car-slide";
-import { StyleProvider, ThemePicker } from 'vcc-ui';
-import App from "views/app";
+import Carousel from "components/carousel";
+import React, { useEffect, useState } from "react";
+import { Grid, Row, Col, Logo, View } from "vcc-ui";
 
-
-const HomePage = () => {
+const App = () => {
   const [cars, setCars] = useState<Car[]>();
   
   useEffect(() => {
@@ -23,16 +21,16 @@ const HomePage = () => {
       }
     });
   }, [cars])
-  
+
   return (
-    <React.StrictMode>
-      <StyleProvider>
-        <ThemePicker variant="light">
-          <App />
-        </ThemePicker>
-      </StyleProvider>
-    </React.StrictMode>
+    <Grid>
+      <Row align="center">
+        <Col size={12}>
+          {_slides && <Carousel slideItems={_slides} />}
+        </Col>
+      </Row>
+    </Grid>
   );
 }
 
-export default HomePage;
+export default App;
