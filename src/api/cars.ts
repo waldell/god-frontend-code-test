@@ -11,7 +11,4 @@ export type Car = {
 const get = async (): Promise<Car[]> => {
   return (await fetch(`/api/cars.json`)).json();
 }
-const post = async (): Promise<Car[]> => {
-  throw Error('Not implemented!!! Just to show basic principle!!!');
-}
-export default { get, post };
+export default { get };
